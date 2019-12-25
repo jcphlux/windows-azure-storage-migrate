@@ -20,7 +20,6 @@ jQuery(document).ready(function($) {
         nonce: nonce
       },
       success: function(response) {
-        console.log(response);
         if (response.type == "success") {
           $("#responce").prepend(response.data + "</br></br>");
           if (page++ <= total) {

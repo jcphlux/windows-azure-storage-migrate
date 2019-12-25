@@ -167,8 +167,7 @@ class Windows_Azure_Storage_Migrate_Runner {
 
 			$posts = get_posts(array('post_type' => "attachment", "posts_per_page" => 1, 'offset' => $page));
 
-			foreach ($posts as $post) {
-				$result['post'] = $post;
+			foreach ($posts as $post) {				
 				$name = $post->post_title . " " . $post->ID;
 
 				$existingAzureMeta = get_post_meta($post->ID, "windows_azure_storage_info", true);
