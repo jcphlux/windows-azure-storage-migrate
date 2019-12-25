@@ -4,10 +4,10 @@
  *  @package WordPress Plugin Template/Runner
  */
 
-jQuery(document).ready(function ($) {
+jQuery(document).ready(function($) {
   var page = 0;
   var total = 1;
-  var nonce = '';
+  var nonce = "";
 
   var callRunner = function(page, nonce) {
     jQuery.ajax({
@@ -22,7 +22,7 @@ jQuery(document).ready(function ($) {
       success: function(response) {
         console.log(response);
         if (response.type == "success") {
-          $("#responce").prepend(response.data + '</br></br>');
+          $("#responce").prepend(response.data + "</br></br>");
           if (page++ <= total) {
             callRunner(page, nonce);
           }
@@ -39,7 +39,6 @@ jQuery(document).ready(function ($) {
     total = parseInt($(this).attr("data-total"));
     nonce = $(this).attr("data-nonce");
 
-    
     callRunner(page, nonce);
   });
 });

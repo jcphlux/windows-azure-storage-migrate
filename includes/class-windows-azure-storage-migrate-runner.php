@@ -99,8 +99,8 @@ class Windows_Azure_Storage_Migrate_Runner {
 	 * 
 	 * @return void
 	 */
-	public function runner_page() {		//. $this->parent->script_suffix
-		wp_register_script( $this->parent->_token . '-runner-js', $this->parent->assets_url . 'js/runner'  . '.js', array( 'jquery' ) , '1.0.0', true );
+	public function runner_page() {
+		wp_register_script( $this->parent->_token . '-runner-js', $this->parent->assets_url . 'js/runner' . $this->parent->script_suffix . '.js', array( 'jquery' ) , '1.0.0', true );
 		wp_localize_script( $this->parent->_token . '-runner-js', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));   
 		wp_enqueue_script( $this->parent->_token . '-runner-js' );
 
@@ -175,13 +175,8 @@ class Windows_Azure_Storage_Migrate_Runner {
 				if (isset($existingAzureMeta) && empty($existingAzureMeta) == false) {
 					$result['data'] = $name . " already migrated";
 				}else{
-					$file = wp_get_attachment_metadata($post->ID, true);//get_post_meta($post->ID, "_wp_attached_file", true);
+					$file = wp_get_attachment_metadata($post->ID, true);
 
-					// $data = array(
-					// 	"data" =>
-					// 		array(
-					// 			"file" => $file
-					// 		));
 					$result['moved'] = windows_azure_storage_wp_generate_attachment_metadata($file, $post->ID);
 					
 					if($delete_local){
