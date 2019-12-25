@@ -1,0 +1,33 @@
+# Copyright (C) 2014 windows_azure_storage_migrate
+# This file is distributed under the same license as the windows_azure_storage_migrate package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: windows_azure_storage_migrate 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/WordPress-Plugin-Template\n"
+"POT-Creation-Date: 2019-12-23 20:29-0600\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#: includes/class-windows-azure-storage-migrate.php:207
+#: includes/class-windows-azure-storage-migrate.php:216
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Microsoft Azure Storage Migration for WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.phluxapps.com/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Phlux Apps LLC."
+msgstr ""

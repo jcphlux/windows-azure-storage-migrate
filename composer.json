@@ -1,0 +1,20 @@
+{
+  "name": "phluxapps/windows-azure-storage-migrate",
+  "license": "GPL-2.0-or-later",
+  "description": "Migrate existing media using Microsoft Azure Storage for WordPress to host your website's media files.",
+  "keywords": [
+    "wordpress",
+    "wp",
+    "plugin template"
+  ],
+  "support": {
+    "issues": "https://github.com/jcphlux/windows-azure-storage-migrate"
+  },
+  "require": {
+    "php": ">=5.4",
+    "squizlabs/php_codesniffer": "^3.3.1"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "2.1.*"
+  }
+}
