@@ -38,12 +38,12 @@ or
 
 ## Changelog
 
-= 1.0 =
+### 1.0
 * 2019-12-26
 * Initial release
 
 ## Upgrade Notice
 
-= 1.0 =
+### 1.0
 * 2012-19-26
 * Initial release
