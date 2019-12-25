@@ -136,8 +136,8 @@ class Windows_Azure_Storage_Migrate_Runner {
 	public function windows_azure_storage_runner_preamble($disabled) {	
 		echo '<div class="wrap">';
 		echo '<h2>';
-		echo '<img src="' . esc_url( MSFT_AZURE_PLUGIN_URL . 'images/azure-icon.png' ) . '" alt="' . esc_attr_e( 'Microsoft Azure', 'windows-azure-storage' ) . '" style="width:32px">';
-		esc_html_e( 'Microsoft Azure Storage for WordPress', 'windows-azure-storage' );
+		echo '<img src="' . esc_url( MSFT_AZURE_PLUGIN_URL . 'images/azure-icon.png' ) . '" alt="' . __( 'Microsoft Azure', 'windows-azure-storage' ) . '" style="width:32px">';
+		esc_html_e( 'Microsoft Azure Storage Migration for WordPress', 'windows-azure-storage' );
 		echo '</h2>';
 		echo '<p>';
 		if($disabled){
@@ -159,6 +159,7 @@ class Windows_Azure_Storage_Migrate_Runner {
 	function windows_azure_storage_migrate_media(){
 		// nonce check for an extra layer of security, the function will exit if it fails
 		if ( !wp_verify_nonce( $_REQUEST['nonce'], "windows_azure_storage_runner_nonce")) {
+			$result['data'] ="Invalid request";
 			$result['type'] = "error";
 		}else{
 			$page = $_REQUEST["page"];
@@ -166,25 +167,30 @@ class Windows_Azure_Storage_Migrate_Runner {
 			$delete_local = Windows_Azure_Helper::delete_local_file();
 
 			$posts = get_posts(array('post_type' => "attachment", "posts_per_page" => 1, 'offset' => $page));
+			if($posts){
+				foreach ($posts as $post) {				
+					$name = $post->post_title . " " . $post->ID;
 
-			foreach ($posts as $post) {				
-				$name = $post->post_title . " " . $post->ID;
+					$existingAzureMeta = get_post_meta($post->ID, "windows_azure_storage_info", true);
+					if (isset($existingAzureMeta) && empty($existingAzureMeta) == false) {
+						$result['data'] = $name . " already migrated";
+						$result['type'] = "warning";
+					}else{
+						$file = wp_get_attachment_metadata($post->ID, true);
 
-				$existingAzureMeta = get_post_meta($post->ID, "windows_azure_storage_info", true);
-				if (isset($existingAzureMeta) && empty($existingAzureMeta) == false) {
-					$result['data'] = $name . " already migrated";
-				}else{
-					$file = wp_get_attachment_metadata($post->ID, true);
-
-					$result['moved'] = windows_azure_storage_wp_generate_attachment_metadata($file, $post->ID);
-					
-					if($delete_local){
-						$result['delete_local'] = windows_azure_storage_delete_local_files($file, $post->ID);
-					}
-					$result['data'] = $name . " migrated";
-				}			
+						$result['moved'] = windows_azure_storage_wp_generate_attachment_metadata($file, $post->ID);
+						
+						if($delete_local){
+							$result['delete_local'] = windows_azure_storage_delete_local_files($file, $post->ID);
+						}
+						$result['data'] = $name . " migrated";
+						$result['type'] = "success";
+					}			
+				}
+			}else{
+				$result['type'] = "none";
 			}
-			$result['type'] = "success";			
+			
 		}
 		
 		// Check if action was fired via Ajax call. If yes, JS code will be triggered, else the user is redirected to the post page

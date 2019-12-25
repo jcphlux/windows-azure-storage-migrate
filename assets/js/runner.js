@@ -20,13 +20,21 @@ jQuery(document).ready(function($) {
         nonce: nonce
       },
       success: function(response) {
-        if (response.type == "success") {
-          $("#responce").prepend(response.data + "</br></br>");
-          if (page++ <= total) {
-            callRunner(page, nonce);
-          }
-        } else {
-          //alert("Your like could not be added");
+        if (response.type !== "none") {
+          html =
+            '<div class="notice notice-' +
+            response.type +
+            '">' +
+            "<p>" +
+            "<strong>" +
+            response.data +
+            "</strong>" +
+            "</p>" +
+            "</div>";
+          $("#responce").prepend(html);          
+        }
+        if (page++ <= total) {
+          callRunner(page, nonce);
         }
       }
     });
