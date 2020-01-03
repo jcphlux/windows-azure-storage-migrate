@@ -24,13 +24,16 @@ For more details on Microsoft Azure Storage, please visit the <a href="https://a
 
 ## Installation
 
-Installing "Microsoft Azure Storage Migration for WordPress" can be done either by searching for "Microsoft Azure Storage Migration for WordPress" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
-1. Download the plugin via WordPress.org
-1. Upload the ZIP file through the 'Plugins > Add New > Upload' screen in your WordPress dashboard
-1. Activate the plugin through the 'Plugins' menu in WordPress
-
-or
+> ***Note: WIP This plugin has not been added to WordPress.org yet.***
+> 
+> Installing "Microsoft Azure Storage Migration for WordPress" can be done either by searching for "Microsoft Azure Storage Migration for > > WordPress" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+> 
+> 1. Download the plugin via WordPress.org
+> 1. Upload the ZIP file through the 'Plugins > Add New > Upload' screen in your WordPress dashboard
+> 1. Activate the plugin through the 'Plugins' menu in WordPress
+> 
+> or
 
 1. Upload the plugin files to the `/wp-content/plugins/windows-azure-storage-migrate` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress.
